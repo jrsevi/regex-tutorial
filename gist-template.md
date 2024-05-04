@@ -32,37 +32,41 @@ $ is used as the end of an anchor. When it's placed at the end of an expression,
 
 when used together as in ^abc$, they will match an entire line only comprised of abc, any additional characters would establish a no match.
 
+Code:
+
+```javascript
 let regex = /^abc$/;
 console.log(regex.test("abc")); // true
 console.log(regex.test("abcd")); // false
 console.log(regex.test("abcdabc")); // false
 console.log(regex.test("abcabc")); // false
+```
 
 ### Quantifiers
 
-'+' is a quantifier that means one or more of the preceding element. The {2,6} establishes between 2 and 6 of the preceding element.
+`+` is a quantifier that means one or more of the preceding element. The `{2,6}` establishes between 2 and 6 of the preceding element.
 
 Quantifiers used in regualr expressions establish how many instances of the preceding element are required for a match.
 
-'+' means one or more
+`+` means one or more
 
-{a,b} means between "a and b"
+`{a,b}` means between "a and b"
 
 ### Grouping Constructs
 
-The () are used for grouping and capturing. They group the regex into the username, domain, and extension.
+The `()` are used for grouping and capturing. They group the regex into the username, domain, and extension.
 
-Grouping and capturing allow you to group together parts of your pattern, which can then be treated as a single unit. This is done using parentheses ().
+Grouping and capturing allow you to group together parts of your pattern, which can then be treated as a single unit. This is done using parentheses `()`.
 
 Grouping
 
-Grouping is useful when you want to apply a quantifier to multiple characters. For example, in the regex (ab)+, the + quantifier applies to the entire group ab, not just the character b. This regex will match "ab", "abab", "ababab", etc.
+Grouping is useful when you want to apply a quantifier to multiple characters. For example, in the regex `(ab)+`, the `+` quantifier applies to the entire group ab, not just the character `b`. This regex will match "ab", "abab", "ababab", etc.
 
-In the context of the email matching regex, grouping is used to separate the email address into three parts: the username, domain, and extension. This is done by surrounding each part with parentheses, like so: ([a-z0-9_\.-]+), ([\da-z\.-]+), and ([a-z\.]{2,6}).
+In the context of the email matching regex, grouping is used to separate the email address into three parts: the username, domain, and extension. This is done by surrounding each part with parentheses, like so: `([a-z0-9_\.-]+)`, `([\da-z\.-]+)`, and `([a-z\.]{2,6})`.
 
 Capturing
 
-In addition to grouping, parentheses also create a capturing group. A capturing group "captures" the part of the string matched by the part of the regex inside the parentheses. These captured groups can then be referred back to with backreferences (using \1, \2, etc.).
+In addition to grouping, parentheses also create a capturing group. A capturing group "captures" the part of the string matched by the part of the regex inside the parentheses. These captured groups can then be referred back to with backreferences (using `\1`, `\2,` etc.).
 
 In the email matching regex, there are three capturing groups corresponding to the username, domain, and extension of the email address. However, this regex does not use backreferences, so the capturing feature is not utilized in this case.
 
@@ -72,28 +76,32 @@ It's important to note that not all parentheses create capturing groups. If you 
 
 this regex uses bracket expressions to determine a range of characters that can be used in the email address.
 
-You can use [] in regular expression to match any one character out of a set of characters.
+You can use `[]` in regular expression to match any one character out of a set of characters.
 
-Inside [] you can establish a range of characters, or specific characters. [a-z] will match to the entire a-z lower character case, while [a] will only match to a.
+Inside `[]` you can establish a range of characters, or specific characters. `[a-z]` will match to the entire a-z lower character case, while `[a]` will only match to a.
 
 In the context of the email matching regex, bracket expressions are used to specify the range of characters that can be used in different parts of the email address:
 
-([a-z0-9_\.-]+): The bracket expression [a-z0-9_\.-] specifies that the username part of the email address can contain any one lowercase letter (a-z), digit (0-9), underscore (\_), dot (.), or hyphen (-).
-([\da-z\.-]+): The bracket expression [\da-z\.-] specifies that the domain part of the email address can contain any one digit (\d is a shorthand character class that matches any digit), lowercase letter (a-z), dot (.), or hyphen (-).
-([a-z\.]{2,6}): The bracket expression [a-z\.] specifies that the extension part of the email address can contain any one lowercase letter (a-z) or dot (.).
+`([a-z0-9_\.-]+)` : The bracket expression `[a-z0-9_\.-]` specifies that the username part of the email address can contain any one lowercase letter `(a-z)`, digit `(0-9)`, underscore `(\_)`, dot `(.)`, or hyphen `(-)`.
+`([\da-z\.-]+)`: The bracket expression `[\da-z\.-]` specifies that the domain part of the email address can contain any one digit (\d is a shorthand character class that matches any digit), lowercase letter `(a-z)`, dot `(.)`, or hyphen `(-)`.
+`([a-z\.]{2,6})`: The bracket expression `[a-z\.]` specifies that the extension part of the email address can contain any one lowercase letter `(a-z)` or dot `(.)`.
 
 ### Character Classes
 
-The email regex uses the character classes [a-z0-9_\.-], [\da-z\.-], and [a-z\.].
+The email regex uses the character classes `[a-z0-9_\.-]`, `[\da-z\.-]`, and `[a-z\.]`.
 
-Username: [a-z0-9_\.-]: This character class matches any one lowercase letter (a-z), digit (0-9), underscore (\_), dot (.), or hyphen (-).
+Username: `[a-z0-9_\.-]`: This character class matches any one lowercase letter `(a-z)`, digit `(0-9)`, underscore (\_), dot (.), or hyphen (-).
 
-Domain: [\da-z\.-]: This character class matches any one digit (\d is a shorthand character class that matches any digit), lowercase letter (a-z), dot (.), or hyphen (-).
+Domain: `[\da-z\.-]`: This character class matches any one digit (\d is a shorthand character class that matches any digit), lowercase letter `(a-z)`, dot `(.)`, or hyphen `(-)`.
 
-Extension: [a-z\.]: This character class matches any one lowercase letter (a-z) or dot (.).
+Extension: `[a-z\.]`: This character class matches any one lowercase letter `(a-z)` or dot `(.)`.
 
 ## Author
 
 Written by Jeremy Sevilla
 
 Github: https://github.com/jrsevi
+
+```
+
+```
